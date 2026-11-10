@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoVerify used car marketplace and inspection management platform.">
+    <title>Home | AutoVerify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --primary-blue: #1d3557;
+            --navbar-bg: #ffffff;
+            --header-text: #374151;
+            --body-text: #475569;
+            --charcoal-text: #1f2937;
+            --light-bg: #f0f4f8;
+            --border-color: #e2e8f0;
+            --green-accent: #1f7a4c;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--body-text);
+        }
+
+        .navbar-brand {
+            color: var(--header-text);
+            font-weight: 700;
+        }
+
+        h1, h2, h3, .section-title {
+            color: var(--charcoal-text);
+        }
+
+        .text-primary, .hero h1 .text-primary {
+            color: var(--primary-blue) !important;
+        }
+
+        .hero .text-secondary {
+            color: var(--body-text) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #14243b;
+            border-color: #14243b;
+            color: #ffffff;
+        }
+
+        .hero .btn-outline-light {
+            background-color: var(--green-accent);
+            border-color: var(--green-accent);
+            color: #ffffff;
+        }
+        .hero .btn-outline-light:hover {
+            background-color: #165836;
+            border-color: #165836;
+            color: #ffffff;
+        }
+
+        .search-widget {
+            background-color: rgba(203, 213, 225, 0.2) !important;
+            backdrop-filter: blur(4px);
+        }
+        
+        .search-widget .text-muted {
+            color: var(--body-text) !important;
+        }
+        .search-widget label.form-label {
+            color: var(--charcoal-text);
+        }
+        
+        .soft-card {
+            border-color: var(--border-color);
+        }
+        .soft-card .muted {
+            color: var(--body-text) !important;
+        }
+        .soft-card h5 {
+            color: var(--charcoal-text);
+        }
+        .feature-icon {
+            color: #13b3a6; 
+            font-weight: 700;
+        }
+
+        .table {
+            color: var(--body-text);
+            border-color: var(--border-color);
+        }
+        .table thead th {
+            color: var(--charcoal-text);
+        }
+        .table strong {
+            color: var(--charcoal-text);
+        }
+        .status-yellow { background-color: #fef9c3; color: #a16207; }
+        .status-green { background-color: #dcfce7; color: #15803d; }
+        .status-blue { background-color: #dbeafe; color: var(--primary-blue); }
+
+        .page-footer {
+            color: var(--body-text);
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+        <div class="container py-2">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-name fs-5">AutoVerify</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNav" aria-controls="publicNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="publicNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#featured-cars">Browse cars</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-secondary px-3" href="login.html" style="color: var(--primary-blue); border-color: var(--border-color);">Login</a></li>
+                    <li class="nav-item"><a class="btn btn-primary px-3" href="signup.html">Create account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container py-4 py-lg-5 hero">
+            <div class="p-4 p-md-5">
+                <div class="row align-items-center g-4 py-lg-4">
+                    <div class="col-lg-7">
+                        <div class="eyebrow mb-3">A smarter way to buy and sell</div>
+                        <h1 class="display-4 mb-3">Find your next car with <span class="text-primary">more confidence.</span></h1>
+                        <p class="lead mb-4">Explore used cars, connect with sellers and request an independent vehicle inspection through one organized platform.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#featured-cars" class="btn btn-primary btn-lg px-4">Explore cars</a>
+                            <a href="signup.html" class="btn btn-outline-light btn-lg px-4">Get started</a>
+                        </div>
+                        <div class="d-flex flex-wrap gap-4 mt-4 small text-secondary">
+                            <span>✓ Independent inspections</span>
+                            <span>✓ Clear vehicle details</span>
+                            <span>✓ Simple process</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="p-3 rounded-4 search-widget">
+                            <div class="small text-uppercase mb-2" style="color:#78b0a2;letter-spacing:1px">Start your search</div>
+                            <div class="bg-white text-dark rounded-3 p-3">
+                                <label class="form-label">Make or model</label>
+                                <input class="form-control mb-3" placeholder="e.g. Toyota Corolla">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <label class="form-label">Min. price</label>
+                                        <select class="form-select">
+                                            <option>Any</option>
+                                            <option>PKR 10 lac</option>
+                                            <option>PKR 20 lac</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Max. price</label>
+                                        <select class="form-select">
+                                            <option>Any</option>
+                                            <option>PKR 30 lac</option>
+                                            <option>PKR 50 lac</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <a href="#featured-cars" class="btn btn-primary w-100 mt-3">Search vehicles</a>
+                                <div class="text-muted small mt-2">search interface — listings below.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container pb-5" id="how-it-works">
+            <div class="text-center mb-4">
+                <div class="fw-bold small text-uppercase" style="color: #13b3a6;">How AutoVerify works</div>
+                <h2 class="section-title mt-2">A more organized car buying journey</h2>
+                <p class="muted">Browse, request an inspection and review a structured report.</p>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="soft-card p-4">
+                        <div class="feature-icon mb-3">01</div>
+                        <h5 class="fw-bold">Browse vehicles</h5>
+                        <p class="muted mb-0">Explore available used cars and review their details, price and photographs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="soft-card p-4">
+                        <div class="feature-icon mb-3">02</div>
+                        <h5 class="fw-bold">Request inspection</h5>
+                        <p class="muted mb-0">Request an independent inspection and wait for the seller to approve access.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="soft-card p-4">
+                        <div class="feature-icon mb-3">03</div>
+                        <h5 class="fw-bold">Review the report</h5>
+                        <p class="muted mb-0">Review the inspector's observations, checklist results and supporting photographs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container pb-5" id="featured-cars">
+            <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
+                <div>
+                    <div class="fw-bold small text-uppercase" style="color: #13b3a6;">Sample inventory</div>
+                    <h2 class="section-title mb-0">Featured vehicles</h2>
+                </div>
+                <span class="muted small">Illustrative dummy listings</span>
+            </div>
+            <div class="row g-4">
+                <!-- Vehicle 1: Toyota Corolla -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="soft-card h-100 overflow-hidden">
+                        <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/corolla.png" alt="Black Toyota Corolla 2023">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge text-bg-light border">2023</span>
+                                <span class="status status-green">Available</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Toyota Corolla Altis</h5>
+                            <p class="muted small mb-2">1.6L • Automatic • 15,000 km</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="car-price" style="color: var(--primary-blue); font-weight: 700;">PKR 6,100,000</span>
+                                <a href="login.html" class="btn btn-sm btn-outline-secondary" style="color: var(--primary-blue); border-color: var(--border-color);">View details</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Vehicle 2: Honda Civic -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="soft-card h-100 overflow-hidden">
+                        <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/civic.png" alt="Grey Honda Civic 2022">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge text-bg-light border">2022</span>
+                                <span class="status status-green">Available</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Honda Civic Oriel</h5>
+                            <p class="muted small mb-2">1.5L Turbo • Automatic • 28,000 km</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="car-price" style="color: var(--primary-blue); font-weight: 700;">PKR 7,200,000</span>
+                                <a href="login.html" class="btn btn-sm btn-outline-secondary" style="color: var(--primary-blue); border-color: var(--border-color);">View details</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Vehicle 3: Kia Sportage -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="soft-card h-100 overflow-hidden">
+                        <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/kia.png" alt="White Kia Sportage">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge text-bg-light border">2021</span>
+                                <span class="status status-yellow">Inspection Pending</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Kia Sportage Alpha</h5>
+                            <p class="muted small mb-2">2.0L • Automatic • 42,000 km</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="car-price" style="color: var(--primary-blue); font-weight: 700;">PKR 7,500,000</span>
+                                <a href="login.html" class="btn btn-sm btn-outline-secondary" style="color: var(--primary-blue); border-color: var(--border-color);">View details</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="container pb-5">
+            <div class="border rounded p-4 p-md-5 bg-light">
+                <div class="row align-items-center g-3">
+                    <div class="col-lg-8">
+                        <h2 class="fw-bold">Ready to get started?</h2>
+                        <p class="mb-0 text-secondary">Create an account to explore the AutoVerify experience.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="signup.html" class="btn btn-primary btn-lg px-4">Create free account</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container page-footer border-top px-4 py-3">
+        <div class="d-flex flex-wrap justify-content-between gap-2">
+            <span>© 2026 AutoVerify. University project demonstration.</span>
+            <span>Used Car Marketplace & Inspection Management</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

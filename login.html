@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoVerify used car marketplace and inspection management platform.">
+    <title>Login | AutoVerify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --primary-blue: #1d3557;
+            --navbar-bg: #ffffff;
+            --header-text: #374151;
+            --body-text: #475569;
+            --charcoal-text: #1f2937;
+            --light-bg: #f0f4f8;
+            --border-color: #e2e8f0;
+            --green-accent: #1f7a4c;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--body-text);
+        }
+
+        .navbar-brand {
+            color: var(--header-text);
+            font-weight: 700;
+        }
+
+        h1, h2, h3, h4, h5, .section-title {
+            color: var(--charcoal-text);
+        }
+
+        .text-primary {
+            color: var(--primary-blue) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #14243b;
+            border-color: #14243b;
+            color: #ffffff;
+        }
+
+        .page-footer {
+            color: var(--body-text);
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+        <div class="container py-2">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-name fs-5">AutoVerify</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNav" aria-controls="publicNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="publicNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#featured-cars">Browse cars</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-secondary px-3" href="login.html" style="color: var(--primary-blue); border-color: var(--border-color);">Login</a></li>
+                    <li class="nav-item"><a class="btn btn-primary px-3" href="signup.html">Create account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="auth-wrap">
+        <div class="container">
+            <div class="row g-4 align-items-stretch justify-content-center">
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="auth-side d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="brand-mark mb-4">A</div>
+                            <div class="eyebrow mb-2">Welcome back</div>
+                            <h1 class="display-6 fw-bold">Your next confident car decision starts here.</h1>
+                            <p class="mt-3">Sign in to manage vehicle listings, inspection requests and reports.</p>
+                        </div>
+                        <div class="small">AutoVerify · Used Car Marketplace</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5">
+                    <div class="auth-card p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <div class="brand-mark mx-auto mb-3">A</div>
+                            <h2 class="section-title">Sign in to AutoVerify</h2>
+                            <p class="muted">Enter your account details to continue.</p>
+                        </div>
+                        
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email address</label>
+                                <input class="form-control" type="email" id="email" placeholder="name@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember">
+                                    <label class="form-check-label small" for="remember">Remember me</label>
+                                </div>
+                                <a class="small text-primary" href="#">Forgot password?</a>
+                            </div>
+                            <a class="btn btn-primary w-100 py-2" href="buyer.html">Sign in</a>
+                        </form>
+
+                        <div class="text-center mt-4 small muted">
+                            Don't have an account? <a class="text-primary fw-semibold" href="signup.html">Create an account</a>
+                        </div>
+                        
+                        <div class="alert alert-light border small mt-4 mb-0">
+                            <strong>Demo note:</strong> This is a static page. The button opens the Buyer homepage; authentication is not implemented.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
