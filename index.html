@@ -10,13 +10,16 @@
     <style>
         :root {
             --primary-blue: #1d3557;
+            --primary-hover: #14243b;
             --navbar-bg: #ffffff;
             --header-text: #374151;
             --body-text: #475569;
             --charcoal-text: #1f2937;
-            --light-bg: #f0f4f8;
+            --light-bg: #f8fafc;
             --border-color: #e2e8f0;
             --green-accent: #1f7a4c;
+            --green-hover: #165836;
+            --teal-accent: #13b3a6;
         }
 
         body {
@@ -47,8 +50,8 @@
             color: #ffffff;
         }
         .btn-primary:hover {
-            background-color: #14243b;
-            border-color: #14243b;
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
             color: #ffffff;
         }
 
@@ -58,13 +61,13 @@
             color: #ffffff;
         }
         .hero .btn-outline-light:hover {
-            background-color: #165836;
-            border-color: #165836;
+            background-color: var(--green-hover);
+            border-color: var(--green-hover);
             color: #ffffff;
         }
 
         .search-widget {
-            background-color: rgba(203, 213, 225, 0.2) !important;
+            background-color: rgba(226, 232, 240, 0.5) !important;
             backdrop-filter: blur(4px);
         }
         
@@ -76,7 +79,9 @@
         }
         
         .soft-card {
-            border-color: var(--border-color);
+            border: 1px solid var(--border-color);
+            background-color: #ffffff;
+            border-radius: 0.75rem;
         }
         .soft-card .muted {
             color: var(--body-text) !important;
@@ -85,7 +90,7 @@
             color: var(--charcoal-text);
         }
         .feature-icon {
-            color: #13b3a6; 
+            color: var(--teal-accent); 
             font-weight: 700;
         }
 
@@ -137,7 +142,7 @@
             <div class="p-4 p-md-5">
                 <div class="row align-items-center g-4 py-lg-4">
                     <div class="col-lg-7">
-                        <div class="eyebrow mb-3">A smarter way to buy and sell</div>
+                        <div class="eyebrow mb-3" style="color: var(--body-text);">A smarter way to buy and sell</div>
                         <h1 class="display-4 mb-3">Find your next car with <span class="text-primary">more confidence.</span></h1>
                         <p class="lead mb-4">Explore used cars, connect with sellers and request an independent vehicle inspection through one organized platform.</p>
                         <div class="d-flex flex-wrap gap-2">
@@ -152,7 +157,7 @@
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="p-3 rounded-4 search-widget">
-                            <div class="small text-uppercase mb-2" style="color:#78b0a2;letter-spacing:1px">Start your search</div>
+                            <div class="small text-uppercase mb-2" style="color: var(--teal-accent); letter-spacing: 1px; font-weight: 600;">Start your search</div>
                             <div class="bg-white text-dark rounded-3 p-3">
                                 <label class="form-label">Make or model</label>
                                 <input class="form-control mb-3" placeholder="e.g. Toyota Corolla">
@@ -185,7 +190,7 @@
 
         <section class="container pb-5" id="how-it-works">
             <div class="text-center mb-4">
-                <div class="fw-bold small text-uppercase" style="color: #13b3a6;">How AutoVerify works</div>
+                <div class="fw-bold small text-uppercase" style="color: var(--teal-accent);">How AutoVerify works</div>
                 <h2 class="section-title mt-2">A more organized car buying journey</h2>
                 <p class="muted">Browse, request an inspection and review a structured report.</p>
             </div>
@@ -217,7 +222,7 @@
         <section class="container pb-5" id="featured-cars">
             <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
                 <div>
-                    <div class="fw-bold small text-uppercase" style="color: #13b3a6;">Sample inventory</div>
+                    <div class="fw-bold small text-uppercase" style="color: var(--teal-accent);">Sample inventory</div>
                     <h2 class="section-title mb-0">Featured vehicles</h2>
                 </div>
                 <span class="muted small">Illustrative dummy listings</span>
@@ -230,7 +235,7 @@
                         <div class="p-3">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge text-bg-light border">2023</span>
-                                <span class="status status-green">Available</span>
+                                <span class="badge status-green">Available</span>
                             </div>
                             <h5 class="fw-bold text-dark mb-1">Toyota Corolla Altis</h5>
                             <p class="muted small mb-2">1.6L • Automatic • 15,000 km</p>
@@ -249,7 +254,7 @@
                         <div class="p-3">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge text-bg-light border">2022</span>
-                                <span class="status status-green">Available</span>
+                                <span class="badge status-green">Available</span>
                             </div>
                             <h5 class="fw-bold text-dark mb-1">Honda Civic Oriel</h5>
                             <p class="muted small mb-2">1.5L Turbo • Automatic • 28,000 km</p>
@@ -268,7 +273,7 @@
                         <div class="p-3">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge text-bg-light border">2021</span>
-                                <span class="status status-yellow">Inspection Pending</span>
+                                <span class="badge status-yellow">Inspection Pending</span>
                             </div>
                             <h5 class="fw-bold text-dark mb-1">Kia Sportage Alpha</h5>
                             <p class="muted small mb-2">2.0L • Automatic • 42,000 km</p>
@@ -283,7 +288,7 @@
         </section>
 
         <section class="container pb-5">
-            <div class="border rounded p-4 p-md-5 bg-light">
+            <div class="border rounded p-4 p-md-5" style="background-color: var(--light-bg);">
                 <div class="row align-items-center g-3">
                     <div class="col-lg-8">
                         <h2 class="fw-bold">Ready to get started?</h2>
