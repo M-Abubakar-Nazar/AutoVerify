@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Create Account";
+    Layout = "_Layout";
+}
+
+<main class="container d-flex flex-column align-items-center justify-content-center py-5 my-auto">
+
+    <div class="col-md-6 col-lg-5">
+        <div class="auth-card p-4 p-md-5">
+
+            <div class="text-center mb-4">
+                <div class="text-primary fw-bold small text-uppercase mb-1">
+                    Get started
+                </div>
+
+                <h1 class="h3 fw-bold mb-2">Create an account</h1>
+
+                <p class="muted small mb-0">
+                    Join AutoVerify to buy, sell, or inspect vehicles.
+                </p>
+            </div>
+
+            <form method="post" asp-controller="Account" asp-action="Signup">
+
+                <div class="mb-3">
+                    <label class="form-label" for="fullName">Full Name</label>
+
+                    <input type="text" class="form-control" id="fullName" name="FullName" placeholder="Ahmed Raza"
+                           autocomplete="name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email Address</label>
+
+                    <input type="email" class="form-control" id="email" name="Email" placeholder="name@example.com"
+                           autocomplete="email" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+
+                    <input type="password" class="form-control" id="password" name="Password"
+                           placeholder="Create a password" autocomplete="new-password" required />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="role">
+                        I want to register as
+                    </label>
+
+                    <select class="form-select" id="role" name="Role" required>
+                        <option value="Buyer">Buyer</option>
+                        <option value="Seller">Seller</option>
+                        
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+                    Create account
+                </button>
+
+            </form>
+
+            <div class="text-center small">
+                <span class="muted">Already have an account?</span>
+
+                <a asp-controller="Account" asp-action="Login" class="text-primary text-decoration-none fw-bold">
+                    Sign in
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</main>
