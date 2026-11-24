@@ -1,5 +1,8 @@
 bin/
 obj/
+# Local publish output (release artifacts belong in deployment storage, not Git).
+[Pp]ublish/
+IISPublish*/
 .vs/
 .vscode/
 *.user

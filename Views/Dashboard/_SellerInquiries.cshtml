@@ -1,0 +1,36 @@
+@model IReadOnlyList<AutoVerifyMVC.Models.InquiryViewModel>
+
+@if (Model.Count == 0)
+{
+    <p class="text-muted mb-0">No inspection requests have been received yet.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-sm align-middle mb-0">
+            <thead><tr><th>Vehicle</th><th>Buyer</th><th>Note</th><th>Status</th><th>Date</th><th>Inspection report</th></tr></thead>
+            <tbody>
+            @foreach (var inquiry in Model)
+            {
+                <tr>
+                    <td>@inquiry.VehicleName</td>
+                    <td>@inquiry.BuyerName</td>
+                    <td>@(string.IsNullOrWhiteSpace(inquiry.Message) ? "Inspection requested" : inquiry.Message)</td>
+                    <td><span class="badge @(inquiry.Status == "Pending" ? "text-bg-warning" : inquiry.Status == "Completed" ? "text-bg-success" : "text-bg-primary")">@inquiry.Status</span></td>
+                    <td>@inquiry.CreatedAtUtc.ToLocalTime().ToString("MMM d, yyyy")</td>
+                    <td>
+                        @if (inquiry.Status == "Completed")
+                        {
+                            <details><summary>View report</summary><div class="small mt-2">Engine: @inquiry.EngineCondition · Transmission: @inquiry.TransmissionCondition · Body: @inquiry.BodyCondition · Brakes: @inquiry.BrakesCondition</div>@if (!string.IsNullOrWhiteSpace(inquiry.InspectionNotes)) { <div class="small mt-1">@inquiry.InspectionNotes</div> }</details>
+                        }
+                        else
+                        {
+                            <span class="small text-muted">Not submitted</span>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

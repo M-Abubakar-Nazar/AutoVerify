@@ -18,9 +18,18 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
+  color: #ffffff !important;
   background-color: #1b6ec2;
   border-color: #1861ac;
+  font-weight: 700 !important;
+}
+
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-link.active:focus,
+.nav-pills .show > .nav-link:hover,
+.nav-pills .show > .nav-link:focus {
+  color: #ffffff !important;
+  font-weight: 700 !important;
 }
 
 .border-top {

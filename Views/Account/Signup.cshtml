@@ -21,6 +21,7 @@
             </div>
 
             <form method="post" asp-controller="Account" asp-action="Signup">
+                <div asp-validation-summary="All" class="text-danger mb-3" role="alert"></div>
 
                 <div class="mb-3">
                     <label class="form-label" for="fullName">Full Name</label>

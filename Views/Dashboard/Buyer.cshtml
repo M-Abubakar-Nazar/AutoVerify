@@ -1,204 +1,113 @@
+@model AutoVerifyMVC.Models.BuyerDashboardViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Buyer Dashboard";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AutoVerify used car marketplace and inspection management platform.">
-    <title>Buyer Dashboard | AutoVerify</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-        :root {
-            --primary-blue: #1d3557;
-            --navbar-bg: #ffffff;
-            --header-text: #374151;
-            --body-text: #475569;
-            --charcoal-text: #1f2937;
-            --light-bg: #f0f4f8;
-            --border-color: #e2e8f0;
-            --green-accent: #1f7a4c;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: var(--body-text);
-        }
-
-        .navbar-brand {
-            color: var(--header-text);
-            font-weight: 700;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        .section-title {
-            color: var(--charcoal-text);
-        }
-
-        .text-primary {
-            color: var(--primary-blue) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-blue);
-            border-color: var(--primary-blue);
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background-color: #14243b;
-            border-color: #14243b;
-            color: #ffffff;
-        }
-
-        .soft-card {
-            border-color: var(--border-color);
-        }
-
-        .status-yellow {
-            background-color: #fef9c3;
-            color: #a16207;
-        }
-
-        .status-green {
-            background-color: #dcfce7;
-            color: #15803d;
-        }
-
-        .status-blue {
-            background-color: #dbeafe;
-            color: var(--primary-blue);
-        }
-
-        .page-footer {
-            color: var(--body-text);
-            background-color: #ffffff;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container-fluid px-3 px-lg-4 py-1">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <span class="brand-name">AutoVerify</span>
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                <span class="small muted d-none d-sm-inline">Buyer workspace</span>
-                <div class="avatar">B</div>
-                <a href="login.html" class="btn btn-sm btn-outline-secondary"
-                   style="color: var(--primary-blue); border-color: var(--border-color);">Sign out</a>
-            </div>
+<main class="container py-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+            <p class="text-uppercase small fw-bold text-primary mb-1">Buyer workspace</p>
+            <h1 class="h2 mb-1">Find your next car</h1>
+            <p class="text-muted mb-0">Browse vehicles and send inspection requests to sellers.</p>
         </div>
-    </nav>
-
-    <div class="container-fluid dashboard-shell">
-        <div class="row">
-
-            <aside class="col-md-3 col-lg-2 sidebar">
-                <div class="sidebar-label">Buyer menu</div>
-                <nav class="nav flex-column">
-                    <a class="nav-link active" href="buyer.html">Browse cars</a>
-                    <a class="nav-link" href="#">My inspection requests</a>
-                    <a class="nav-link" href="#">Saved vehicles</a>
-                </nav>
-                <div class="sidebar-label">Account</div>
-                <nav class="nav flex-column">
-                    <a class="nav-link" href="index.html">Public website</a>
-                    <a class="nav-link" href="login.html">Sign out</a>
-                </nav>
-            </aside>
-
-            <main class="col-md-9 col-lg-10 dashboard-main">
-                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
-                    <div>
-                        <div class="text-primary fw-bold small text-uppercase">Buyer dashboard</div>
-                        <h1 class="h3 section-title mb-1">Available vehicles</h1>
-                        <p class="muted mb-0">Browse verified listings and request independent inspections.</p>
-                    </div>
-                </div>
-
-                <div class="row g-4 mb-5">
-                    <!-- Vehicle 1: Toyota Corolla -->
-                    <div class="col-md-6 col-lg-4">
-                        <article class="soft-card h-100 overflow-hidden">
-                            <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/corolla.png"
-                                 alt="Black Toyota Corolla 2023">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge text-bg-light border">2023</span>
-                                    <span class="status status-green">Available</span>
-                                </div>
-                                <h5 class="fw-bold text-dark mb-1">Toyota Corolla Altis</h5>
-                                <p class="muted small mb-2">1.6L • Automatic • 15,000 km</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="fw-bold" style="color: var(--primary-blue);">PKR 6,100,000</span>
-                                    <a href="#" class="btn btn-sm btn-primary">Request inspection</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Vehicle 2: Honda Civic -->
-                    <div class="col-md-6 col-lg-4">
-                        <article class="soft-card h-100 overflow-hidden">
-                            <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/civic.png"
-                                 alt="Grey Honda Civic 2022">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge text-bg-light border">2022</span>
-                                    <span class="status status-green">Available</span>
-                                </div>
-                                <h5 class="fw-bold text-dark mb-1">Honda Civic Oriel</h5>
-                                <p class="muted small mb-2">1.5L Turbo • Automatic • 28,000 km</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="fw-bold" style="color: var(--primary-blue);">PKR 7,200,000</span>
-                                    <a href="#" class="btn btn-sm btn-primary">Request inspection</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Vehicle 3: Kia Sportage -->
-                    <div class="col-md-6 col-lg-4">
-                        <article class="soft-card h-100 overflow-hidden">
-                            <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/kia.png"
-                                 alt="White Kia Sportage">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge text-bg-light border">2021</span>
-                                    <span class="status status-yellow">Inspection Pending</span>
-                                </div>
-                                <h5 class="fw-bold text-dark mb-1">Kia Sportage Alpha</h5>
-                                <p class="muted small mb-2">2.0L • Automatic • 42,000 km</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="fw-bold" style="color: var(--primary-blue);">PKR 7,500,000</span>
-                                    <a href="#" class="btn btn-sm btn-primary">Request inspection</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </main>
-
-        </div>
+        <span class="badge text-bg-light border">@Model.Cars.Count vehicle listings</span>
     </div>
 
-    <footer class="container-fluid page-footer px-4 border-top bg-white py-3">
-        © 2026 AutoVerify · Static university project demonstration
-    </footer>
+    <section class="row g-3 mb-4" aria-label="Inspection request summary">
+        <div class="col-sm-6 col-lg-3"><div class="card"><div class="card-body"><div class="text-muted small">My total requests</div><div id="buyer-total-request-count" class="h3 fw-bold mb-0">@Model.TotalInquiries</div></div></div></div>
+        <div class="col-sm-6 col-lg-3"><div class="card"><div class="card-body"><div class="text-muted small">Awaiting seller response</div><div id="buyer-pending-request-count" class="h3 fw-bold mb-0">@Model.PendingInquiries</div></div></div></div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <section class="card shadow-sm mb-5" aria-labelledby="search-heading">
+        <div class="card-body">
+            <h2 id="search-heading" class="h5 mb-3">Search vehicles</h2>
+            <form id="buyer-search-form" class="row g-3">
+                <div class="col-lg-6">
+                    <label class="form-label" for="search-term">Make or model</label>
+                    <input id="search-term" name="searchTerm" class="form-control" placeholder="e.g. Toyota Corolla" />
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <label class="form-label" for="price-range">Price range</label>
+                    <select id="price-range" name="priceRange" class="form-select">
+                        <option value="">Any price</option><option value="under-20">Under 20 Lakh</option><option value="20-30">20–30 Lakh</option><option value="30-40">30–40 Lakh</option><option value="40-50">40–50 Lakh</option><option value="50-70">50–70 Lakh</option><option value="70-90">70–90 Lakh</option><option value="90-120">90–120 Lakh</option><option value="120-plus">Over 120 Lakh</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 d-flex align-items-end">
+                    <button class="btn btn-primary w-100" type="submit">Search</button>
+                </div>
+            </form>
+            <div id="search-feedback" class="small text-danger mt-2" role="status"></div>
+        </div>
+    </section>
 
-</html>
+    <section class="mb-5" aria-labelledby="cars-heading">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 id="cars-heading" class="h4 mb-0">Vehicle listings</h2>
+            <span class="small text-muted">Current vehicle listings</span>
+        </div>
+        <div id="buyer-car-results" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @await Html.PartialAsync("_BuyerCarCards", Model.Cars)
+        </div>
+    </section>
+
+    <section class="card shadow-sm" aria-labelledby="inquiries-heading">
+        <div class="card-body">
+            <h2 id="inquiries-heading" class="h4 mb-3">My inspection requests</h2>
+            <div id="buyer-inquiries">
+                @await Html.PartialAsync("_BuyerInquiries", Model.Inquiries)
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        (() => {
+            const searchUrl = '@Url.Action("SearchCars", "Dashboard")';
+            const requestUrl = '@Url.Action("RequestInspection", "Dashboard")';
+            const inquiriesUrl = '@Url.Action("BuyerInquiries", "Dashboard")';
+
+            $('#buyer-search-form').on('submit', function (event) {
+                event.preventDefault();
+                $('#search-feedback').text('');
+                $.get(searchUrl, $(this).serialize())
+                    .done(html => $('#buyer-car-results').html(html))
+                    .fail(xhr => $('#search-feedback').text(xhr.responseText || 'Could not search vehicles.'));
+            });
+
+            $('#buyer-car-results').on('submit', '.js-inquiry-form', function (event) {
+                event.preventDefault();
+                const form = $(this);
+                const feedback = form.find('.js-inquiry-feedback');
+                feedback.removeClass('text-danger text-success').text('Sending…');
+                $.post(requestUrl, form.serialize())
+                    .done(result => {
+                        feedback.addClass('text-success').text(result.message);
+                        form[0].reset();
+                        $('#buyer-total-request-count').text(Number($('#buyer-total-request-count').text()) + 1);
+                        $('#buyer-pending-request-count').text(Number($('#buyer-pending-request-count').text()) + 1);
+                        $.get(inquiriesUrl).done(html => $('#buyer-inquiries').html(html));
+                    })
+                    .fail(xhr => {
+                        const result = xhr.responseJSON;
+                        feedback.addClass('text-danger').text(result?.message || 'Could not send the inspection request.');
+                    });
+            });
+
+            const syncStatuses = () => $.get('@Url.Action("CarStatuses", "Home")').done(items => items.forEach(item => {
+                const badge = $(`[data-car-status-id="${item.id}"]`);
+                if (!badge.length) return;
+                badge.text(item.status).removeClass('text-bg-success text-bg-warning text-bg-secondary text-bg-danger')
+                    .addClass(item.status === 'Sold' ? 'text-bg-danger' : item.status === 'Unavailable' ? 'text-bg-secondary' : item.status === 'Reserved' ? 'text-bg-warning' : 'text-bg-success');
+                const card = badge.closest('.card');
+                if (item.status === 'Available') {
+                    if (!card.find('.js-inquiry-form').length && item.sellerId) location.reload();
+                } else {
+                    card.find('.js-inquiry-form').remove();
+                }
+            }));
+            syncStatuses(); window.setInterval(syncStatuses, 10000);
+        })();
+    </script>
+}

@@ -1,0 +1,504 @@
+
+
+:root {
+    --av-primary: #153e63;
+    --av-primary-dark: #102f4b;
+    --av-accent: #f0a52b;
+    --av-light: #f5f7fa;
+    --av-dark: #202b36;
+    --av-muted: #6c757d;
+    --av-border: #e3e8ee;
+    --av-white: #ffffff;
+    --av-radius: 12px;
+    --av-shadow: 0 5px 20px rgba(20, 45, 70, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--av-dark);
+    background: var(--av-light);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--av-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--av-accent);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 2. Navigation */
+.navbar {
+    background: var(--av-white);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand {
+    color: var(--av-primary) !important;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.navbar .nav-link {
+    color: var(--av-dark);
+    font-weight: 600;
+    padding: 10px 14px;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--av-accent);
+}
+
+/* 3. Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--av-primary);
+    border-color: var(--av-primary);
+}
+
+.btn-primary:hover {
+    background: var(--av-primary-dark);
+    border-color: var(--av-primary-dark);
+    transform: translateY(-1px);
+}
+
+.btn-warning {
+    background: var(--av-accent);
+    border-color: var(--av-accent);
+    color: #202020;
+}
+
+.btn-warning:hover {
+    background: #dc921d;
+    border-color: #dc921d;
+    color: #202020;
+}
+
+/* 4. Headings and sections */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--av-dark);
+    font-weight: 700;
+}
+
+section {
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+.section-title {
+    margin-bottom: 12px;
+    color: var(--av-primary);
+    font-weight: 800;
+}
+
+.section-subtitle {
+    color: var(--av-muted);
+    margin-bottom: 30px;
+}
+
+/* 5. Hero section */
+.hero,
+.hero-section {
+    background: linear-gradient(
+        120deg,
+        var(--av-primary-dark),
+        var(--av-primary)
+    );
+    color: var(--av-white);
+    padding: 85px 0;
+}
+
+.hero h1,
+.hero-section h1,
+.hero h2,
+.hero-section h2 {
+    color: var(--av-white);
+    font-weight: 800;
+}
+
+.hero p,
+.hero-section p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.08rem;
+}
+
+/* 6. Cards */
+.card {
+    border: 1px solid var(--av-border);
+    border-radius: var(--av-radius);
+    box-shadow: var(--av-shadow);
+    overflow: hidden;
+}
+
+.card-header {
+    background: var(--av-primary);
+    color: var(--av-white);
+    font-weight: 700;
+}
+
+.card-title {
+    color: var(--av-primary);
+    font-weight: 700;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+/* 7. Vehicle cards and images */
+.vehicle-card {
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(20, 45, 70, 0.14);
+}
+
+.vehicle-card img,
+.vehicle-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.vehicle-details {
+    color: var(--av-muted);
+    font-size: 0.95rem;
+}
+
+.vehicle-price {
+    color: var(--av-primary);
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+/* 8. Forms and inputs */
+.form-label {
+    color: var(--av-dark);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border: 1px solid #d7dee7;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--av-primary);
+    box-shadow: 0 0 0 0.2rem rgba(21, 62, 99, 0.12);
+}
+
+textarea.form-control {
+    min-height: 110px;
+}
+
+/* 9. Login and signup pages */
+.auth-section {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 15px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 470px;
+    padding: 30px;
+    background: var(--av-white);
+    border: 1px solid var(--av-border);
+    border-radius: var(--av-radius);
+    box-shadow: var(--av-shadow);
+}
+
+.auth-title {
+    color: var(--av-primary);
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+/* 10. Dashboard */
+.dashboard-card {
+    padding: 22px;
+    background: var(--av-white);
+    border: 1px solid var(--av-border);
+    border-radius: var(--av-radius);
+    box-shadow: var(--av-shadow);
+    height: 100%;
+}
+
+.dashboard-card h3,
+.dashboard-card h4 {
+    color: var(--av-primary);
+}
+
+.dashboard-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--av-primary);
+}
+
+/* 11. Tables */
+.table {
+    background: var(--av-white);
+    vertical-align: middle;
+}
+
+.table thead th {
+    background: var(--av-primary);
+    color: var(--av-white);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.table td,
+.table th {
+    padding: 12px 14px;
+}
+
+/* 12. Badges and status labels */
+.badge {
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* 13. Footer */
+footer {
+    background: var(--av-primary-dark);
+    color: var(--av-white);
+    padding: 30px 0;
+}
+
+footer a {
+    color: var(--av-white);
+}
+
+footer a:hover {
+    color: var(--av-accent);
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+/* 14. Utility styles */
+.bg-light {
+    background-color: var(--av-light) !important;
+}
+
+.text-primary {
+    color: var(--av-primary) !important;
+}
+
+.rounded-custom {
+    border-radius: var(--av-radius);
+}
+
+.shadow-custom {
+    box-shadow: var(--av-shadow);
+}
+
+/* 15. Responsive adjustments */
+@media (max-width: 768px) {
+    .hero,
+    .hero-section {
+        padding: 55px 0;
+        text-align: center;
+    }
+
+    section {
+        padding-top: 38px;
+        padding-bottom: 38px;
+    }
+
+    .card-img-top,
+    .vehicle-card img,
+    .vehicle-image {
+        height: 190px;
+    }
+
+    .auth-card {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        padding: 9px 15px;
+    }
+
+    .dashboard-number {
+        font-size: 1.6rem;
+    }
+}
+
+/* Shared AutoVerify theme overrides */
+body, button, input, select, textarea {
+    font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+}
+
+body {
+    background-color: #f5f7fa !important;
+    color: #344256;
+}
+
+.hero {
+    background: linear-gradient(135deg, #f3f7fb 0%, #e8f0f6 100%) !important;
+    border: 1px solid #e0e8ef;
+    border-radius: 1.25rem;
+    color: #344256 !important;
+}
+
+.hero h1, .hero h2, .hero p, .hero .text-secondary, .hero .text-primary {
+    color: #24364b !important;
+}
+
+.hero .btn-outline-light {
+    background-color: #fff !important;
+    border-color: #cbd7e2 !important;
+    color: #1d3557 !important;
+}
+
+.hero .btn-outline-light:hover {
+    background-color: #e8f0f6 !important;
+    color: #14243b !important;
+}
+
+.home-hero {
+    background: linear-gradient(125deg, #eaf2f8, #f7fafc 65%, #eef6f5);
+    border: 1px solid #dce7ef;
+}
+
+.home-hero-note { background: #153e63; color: #fff; }
+.home-hero-note strong { color: #fff; font-size: 1.15rem; }
+.home-hero-note p { color: rgba(255,255,255,.88); }
+.car-description-summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 3em; }
+.inspection-request-ribbon { background: #153e63; color: #fff !important; border-radius: .35rem; padding: .55rem .75rem; font-weight: 700; }
+.inspection-request-ribbon, .inspection-request-ribbon * { color: #fff !important; }
+
+/* High contrast text for dark table headers, ribbons, badges, and tabs. */
+.table thead th,
+.table thead th *,
+.table thead th a:hover,
+.table thead th a:focus,
+.table thead th a:active {
+    background-color: #153e63 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.home-hero-note,
+.home-hero-note *,
+.inspection-request-ribbon,
+.inspection-request-ribbon *,
+.dark-banner,
+.dark-banner *,
+.navy-ribbon,
+.navy-ribbon *,
+.card-header,
+.card-header * {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.home-hero-note,
+.inspection-request-ribbon,
+.dark-banner,
+.navy-ribbon,
+.card-header {
+    background-color: #153e63;
+}
+
+.bg-primary,
+.bg-primary *,
+.bg-dark,
+.bg-dark *,
+.navbar-dark,
+.navbar-dark * {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.bg-primary a:hover,
+.bg-primary a:focus,
+.bg-dark a:hover,
+.bg-dark a:focus,
+.navbar-dark a:hover,
+.navbar-dark a:focus {
+    color: #ffffff !important;
+}
+
+.badge.text-bg-primary,
+.badge.text-bg-secondary,
+.badge.text-bg-success,
+.badge.text-bg-danger,
+.badge.text-bg-dark,
+.badge.text-bg-primary *,
+.badge.text-bg-secondary *,
+.badge.text-bg-success *,
+.badge.text-bg-danger *,
+.badge.text-bg-dark * {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link,
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-link.active:focus,
+.nav-tabs.dark-tabs .nav-link,
+.nav-tabs.dark-tabs .nav-link:hover,
+.nav-tabs.dark-tabs .nav-link:focus,
+.nav-tabs.dark-tabs .nav-link.active,
+.dark-tabs .nav-link.active,
+.dark-tabs .nav-link:hover,
+.dark-tabs .nav-link:focus {
+    background-color: #153e63 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.nav-tabs.dark-tabs .nav-link.active:hover,
+.nav-tabs.dark-tabs .nav-link.active:focus,
+.dark-tabs .nav-link.active:hover,
+.dark-tabs .nav-link.active:focus {
+    background-color: #102f4b !important;
+    color: #ffffff !important;
+}

@@ -1,0 +1,50 @@
+@model IReadOnlyList<AutoVerifyMVC.Models.CarListingViewModel>
+
+@if (Model.Count == 0)
+{
+    <div class="col-12">
+        <div class="alert alert-light border mb-0">No vehicles match those filters.</div>
+    </div>
+}
+else
+{
+    foreach (var car in Model)
+    {
+        var defaultImageUrl = Url.Content("~/assets/images/Default.png");
+        var imageUrl = string.IsNullOrWhiteSpace(car.ImagePath) ? defaultImageUrl : car.ImagePath;
+        <div class="col d-flex">
+            <article class="card h-100 w-100 d-flex flex-column shadow-sm overflow-hidden">
+                <img class="w-100 flex-shrink-0" style="height:210px;object-fit:cover" src="@imageUrl" onerror="this.onerror=null;this.src='@defaultImageUrl';" alt="@car.ModelYear @car.Make @car.Model @car.Trim" />
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between gap-2 align-items-center mb-2">
+                        <span class="badge text-bg-light border">@car.ModelYear</span>
+                        <span class="badge status-badge @(car.Status == "Sold" ? "text-bg-danger" : car.Status == "Unavailable" ? "text-bg-secondary" : car.Status == "Reserved" ? "text-bg-warning" : "text-bg-success")" data-car-status-id="@car.Id">@car.Status</span>
+                    </div>
+                    <h2 class="h5 card-title">@car.ModelYear @car.Make @car.Model @car.Trim</h2>
+                    <p class="small text-muted mb-2">@car.Engine · @car.Transmission · @car.MileageKm.ToString("N0") km · @car.FuelType</p>
+                    <p class="car-description-summary mb-2">@car.Description</p>
+                    <details class="mb-2"><summary class="small text-primary">Full details</summary><p class="small mt-2">@car.Description</p></details>
+                    @if (car.Status == "Available" && car.SellerId != null)
+                    {
+                    <form class="js-inquiry-form mt-3" data-inquiry-form="@car.Id">
+                        @Html.AntiForgeryToken()
+                        <div class="inspection-request-ribbon mb-2">Request an inspection</div>
+                        <input type="hidden" name="CarListingId" value="@car.Id" />
+                        <label class="form-label small" for="message-@car.Id">Inspection request note (optional)</label>
+                        <textarea id="message-@car.Id" name="Message" class="form-control form-control-sm mb-2" maxlength="1000" rows="2" placeholder="Add a note for the seller"></textarea>
+                        <button type="submit" class="btn btn-primary btn-sm w-100 text-white">Request inspection</button>
+                        <div class="js-inquiry-feedback small mt-2" role="status"></div>
+                    </form>
+                    }
+                    else
+                    {
+                        <div class="small text-muted mt-auto">Inspection requests are unavailable for this vehicle.</div>
+                    }
+                    <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                        <strong class="text-primary">PKR @car.Price.ToString("N0")</strong>
+                    </div>
+                </div>
+            </article>
+        </div>
+    }
+}

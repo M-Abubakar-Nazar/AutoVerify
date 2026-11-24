@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -117,7 +117,17 @@
         }
 
         .table thead th {
-            color: var(--charcoal-text);
+            background-color: var(--primary-blue) !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+
+        .table thead th *,
+        .table thead th a:hover,
+        .table thead th a:focus,
+        .table thead th a:active {
+            color: #ffffff !important;
+            font-weight: 700 !important;
         }
 
         .table strong {
@@ -185,9 +195,17 @@
 
                     @if (User.Identity?.IsAuthenticated == true)
                     {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                        </li>
                         <li class="nav-item ms-lg-2">
+                            @{
+                                var email = User.Identity?.Name ?? "";
+                                var displayName = User.FindFirst("FullName")?.Value ?? email.Split('@')[0];
+                            }
+
                             <span class="nav-link">
-                                Welcome, @User.Identity.Name
+                                Welcome, @displayName
                             </span>
                         </li>
 
@@ -225,7 +243,7 @@
     <!-- Footer -->
     <footer class="container page-footer border-top px-4 py-3 mt-5">
         <div class="d-flex flex-wrap justify-content-between gap-2">
-            <span>© 2026 AutoVerify. University project demonstration.</span>
+            <span>© 2026 AutoVerify · Trusted vehicle marketplace</span>
             <span>Used Car Marketplace & Inspection Management</span>
         </div>
     </footer>

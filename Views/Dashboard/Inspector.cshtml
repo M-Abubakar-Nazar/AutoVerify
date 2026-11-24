@@ -1,267 +1,157 @@
+@model AutoVerifyMVC.Models.InspectorDashboardViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Inspector dashboard";
+    var defaultImage = Url.Content("~/assets/images/Default.png");
 }
 
-<!DOCTYPE html>
-<html lang="en">
+<main id="inspector-dashboard" class="container py-5">
+    <div class="mb-4"><p class="text-uppercase small fw-bold text-primary mb-1">Inspector workspace</p><h1 class="h2 mb-1">Inspection desk</h1><p class="text-muted mb-0">Claim a buyer request, inspect the vehicle, and submit a structured report.</p></div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AutoVerify used car marketplace and inspection management platform.">
-    <title>Inspector Dashboard | AutoVerify</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-        :root {
-            --primary-blue: #1d3557;
-            --navbar-bg: #ffffff;
-            --header-text: #374151;
-            --body-text: #475569;
-            --charcoal-text: #1f2937;
-            --light-bg: #f0f4f8;
-            --border-color: #e2e8f0;
-            --green-accent: #1f7a4c;
+    @if (TempData["InspectorMessage"] is string message)
+    {
+        <div class="alert alert-success" role="status">@message</div>
+    }
+    @if (TempData["InspectorError"] is string error)
+    {
+        <div class="alert alert-danger" role="alert">@error</div>
+    }
+
+    <section class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 mb-5" aria-label="Inspection statistics">
+        <div class="col"><div class="card h-100"><div class="card-body"><div class="text-muted small">Unassigned requests</div><div class="display-6 fw-bold">@Model.AvailableInspections</div></div></div></div>
+        <div class="col"><div class="card h-100"><div class="card-body"><div class="text-muted small">My active inspections</div><div class="display-6 fw-bold">@Model.ActiveInspections</div></div></div></div>
+        <div class="col"><div class="card h-100"><div class="card-body"><div class="text-muted small">My reports completed</div><div class="display-6 fw-bold">@Model.CompletedInspections</div></div></div></div>
+    </section>
+
+    <section class="mb-5" aria-labelledby="queue-heading">
+        <div class="d-flex justify-content-between align-items-center mb-3"><h2 id="queue-heading" class="h4 mb-0">Available inspection requests</h2><span class="small text-muted">@Model.Queue.Count waiting</span></div>
+        @if (Model.Queue.Count == 0)
+        {
+            <div class="alert alert-light border">There are no unassigned requests right now.</div>
         }
-
-        body {
-            background-color: #ffffff;
-            color: var(--body-text);
-        }
-
-        .navbar-brand {
-            color: var(--header-text);
-            font-weight: 700;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        .section-title {
-            color: var(--charcoal-text);
-        }
-
-        .text-primary {
-            color: var(--primary-blue) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-blue);
-            border-color: var(--primary-blue);
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background-color: #14243b;
-            border-color: #14243b;
-            color: #ffffff;
-        }
-
-        .table {
-            color: var(--body-text);
-            border-color: var(--border-color);
-        }
-
-        .table thead th {
-            color: var(--charcoal-text);
-        }
-
-        .table strong {
-            color: var(--charcoal-text);
-        }
-
-        .status-yellow {
-            background-color: #fef9c3;
-            color: #a16207;
-        }
-
-        .status-green {
-            background-color: #dcfce7;
-            color: #15803d;
-        }
-
-        .status-blue {
-            background-color: #dbeafe;
-            color: var(--primary-blue);
-        }
-
-        .page-footer {
-            color: var(--body-text);
-            background-color: #ffffff;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container-fluid px-3 px-lg-4 py-1">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <span class="brand-mark">A</span>
-                <span class="brand-name">AutoVerify</span>
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                <span class="small muted d-none d-sm-inline">Inspector workspace</span>
-                <div class="avatar">I</div>
-                <a href="login.html" class="btn btn-sm btn-outline-secondary"
-                   style="color: var(--primary-blue); border-color: var(--border-color);">Sign out</a>
+        else
+        {
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach (var inspection in Model.Queue)
+                {
+                    var imageUrl = string.IsNullOrWhiteSpace(inspection.ImagePath) ? defaultImage : inspection.ImagePath;
+                    <div class="col d-flex"><article class="card h-100 w-100 shadow-sm overflow-hidden">
+                        <img src="@imageUrl" onerror="this.onerror=null;this.src='@defaultImage';" alt="@inspection.VehicleName" style="height:210px;width:100%;object-fit:cover" />
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge text-bg-warning align-self-start mb-2">Pending assignment</span>
+                            <h3 class="h5">@inspection.VehicleName</h3>
+                            <p class="small text-muted mb-1">Buyer: @inspection.BuyerName</p>
+                            <p class="small text-muted mb-1">Seller: @inspection.SellerName</p>
+                            <p class="small text-muted">Requested @inspection.CreatedAtUtc.ToLocalTime().ToString("MMM d, yyyy h:mm tt")</p>
+                            @if (!string.IsNullOrWhiteSpace(inspection.Message))
+                            {
+                                <p class="small">Buyer note: @inspection.Message</p>
+                            }
+                            <form asp-action="ClaimInspection" method="post" class="mt-auto js-inspector-claim-form">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="inquiryId" value="@inspection.Id" />
+                                <button class="btn btn-primary w-100" type="submit">Claim inspection</button>
+                            </form>
+                        </div>
+                    </article></div>
+                }
             </div>
-        </div>
-    </nav>
+        }
+    </section>
 
-    <div class="container-fluid dashboard-shell">
-        <div class="row">
-
-            <aside class="col-md-3 col-lg-2 sidebar">
-                <div class="sidebar-label">Inspector workspace</div>
-                <nav class="nav flex-column">
-                    <a class="nav-link active" href="inspector.html">Overview</a>
-                    <a class="nav-link" href="#">Assigned inspections</a>
-                    <a class="nav-link" href="#">Inspection checklist</a>
-                    <a class="nav-link" href="#">Submitted reports</a>
-                </nav>
-                <div class="sidebar-label">Account</div>
-                <nav class="nav flex-column">
-                    <a class="nav-link" href="index.html">Public website</a>
-                    <a class="nav-link" href="login.html">Sign out</a>
-                </nav>
-            </aside>
-
-            <main class="col-md-9 col-lg-10 dashboard-main">
-                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
-                    <div>
-                        <div class="text-primary fw-bold small text-uppercase">Inspector workspace</div>
-                        <h1 class="h3 section-title mb-1">Good morning, Usman</h1>
-                        <p class="muted mb-0">Review assigned inspections and submit structured reports.</p>
-                    </div>
-                    <span class="status status-blue">Inspector account</span>
-                </div>
-
-                <div class="row g-3 mb-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="stat-card">
-                            <div class="stat-icon mb-3">▤</div>
-                            <div class="stat-number">06</div>
-                            <div class="stat-label">Assigned inspections</div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="stat-card">
-                            <div class="stat-icon mb-3">◷</div>
-                            <div class="stat-number">02</div>
-                            <div class="stat-label">Upcoming appointments</div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="stat-card">
-                            <div class="stat-icon mb-3">✓</div>
-                            <div class="stat-number">12</div>
-                            <div class="stat-label">Reports submitted</div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="stat-card">
-                            <div class="stat-icon mb-3">!</div>
-                            <div class="stat-number">01</div>
-                            <div class="stat-label">Pending reports</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dashboard-panel p-3 p-lg-4 mb-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold text-dark mb-0">Assigned inspections</h5>
-                        <span class="small muted">Sample schedule</span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Vehicle</th>
-                                    <th>Appointment</th>
-                                    <th>Location</th>
-                                    <th>Request status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>Toyota Corolla Altis</strong>
-                                        <div class="small muted">2021 · White</div>
-                                    </td>
-                                    <td>12 Nov 2026 · 10:00 AM</td>
-                                    <td>Lahore</td>
-                                    <td><span class="status status-blue">Assigned</span></td>
-                                    <td><a href="#" class="btn btn-sm btn-outline-secondary"
-                                               style="color: var(--primary-blue); border-color: var(--border-color);">View</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Honda Civic Oriel</strong>
-                                        <div class="small muted">2020 · Black</div>
-                                    </td>
-                                    <td>13 Nov 2026 · 02:00 PM</td>
-                                    <td>Lahore</td>
-                                    <td><span class="status status-yellow">Report pending</span></td>
-                                    <td><a href="#" class="btn btn-sm btn-primary">Continue</a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Kia Sportage AWD</strong>
-                                        <div class="small muted">2022 · Grey</div>
-                                    </td>
-                                    <td>07 Nov 2026 · 11:00 AM</td>
-                                    <td>Lahore</td>
-                                    <td><span class="status status-green">Completed</span></td>
-                                    <td><a href="#" class="btn btn-sm btn-outline-secondary"
-                                           style="color: var(--primary-blue); border-color: var(--border-color);">View
-                                        report</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-panel p-4">
-                        <h5 class="fw-bold text-dark">Inspection checklist preview</h5>
-                        <p class="muted small">Each inspection records the observed condition of the vehicle.</p>
-                    
-                        <div class="row g-3">
-                            <div class="col-6 col-md-4">
-                                <div class="border rounded-3 p-3">
-                                    <strong>Engine</strong>
-                                    <div class="small muted">Good / Needs Attention / Poor</div>
+    <section aria-labelledby="assigned-heading">
+        <div class="d-flex justify-content-between align-items-center mb-3"><h2 id="assigned-heading" class="h4 mb-0">My inspections and reports</h2><span class="small text-muted">@Model.AssignedInspections.Count assigned</span></div>
+        @if (Model.AssignedInspections.Count == 0)
+        {
+            <div class="alert alert-light border">Claim a request to start an inspection.</div>
+        }
+        else
+        {
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                @foreach (var inspection in Model.AssignedInspections)
+                {
+                    var imageUrl = string.IsNullOrWhiteSpace(inspection.ImagePath) ? defaultImage : inspection.ImagePath;
+                    <div class="col d-flex"><article class="card h-100 w-100 shadow-sm overflow-hidden">
+                        <img src="@imageUrl" onerror="this.onerror=null;this.src='@defaultImage';" alt="@inspection.VehicleName" style="height:210px;width:100%;object-fit:cover" />
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between gap-2"><h3 class="h5">@inspection.VehicleName</h3><span class="badge @(inspection.Status == "Completed" ? "text-bg-success" : "text-bg-primary")">@inspection.Status</span></div>
+                            <p class="small text-muted">Buyer: @inspection.BuyerName · Seller: @inspection.SellerName</p>
+                            @if (inspection.Status == "In Progress")
+                            {
+                                <form asp-action="SubmitInspectionReport" method="post" class="mt-auto js-inspector-report-form">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="InquiryId" value="@inspection.Id" />
+                                    <div class="row g-2">
+                                        <div class="col-sm-6"><label class="form-label small" for="engine-@inspection.Id">Engine</label><select id="engine-@inspection.Id" name="EngineCondition" class="form-select" required><option value="">Select condition</option><option>Good</option><option>Needs attention</option><option>Poor</option></select></div>
+                                        <div class="col-sm-6"><label class="form-label small" for="transmission-@inspection.Id">Transmission</label><select id="transmission-@inspection.Id" name="TransmissionCondition" class="form-select" required><option value="">Select condition</option><option>Good</option><option>Needs attention</option><option>Poor</option></select></div>
+                                        <div class="col-sm-6"><label class="form-label small" for="body-@inspection.Id">Body</label><select id="body-@inspection.Id" name="BodyCondition" class="form-select" required><option value="">Select condition</option><option>Good</option><option>Needs attention</option><option>Poor</option></select></div>
+                                        <div class="col-sm-6"><label class="form-label small" for="brakes-@inspection.Id">Brakes</label><select id="brakes-@inspection.Id" name="BrakesCondition" class="form-select" required><option value="">Select condition</option><option>Good</option><option>Needs attention</option><option>Poor</option></select></div>
+                                        <div class="col-12"><label class="form-label small" for="notes-@inspection.Id">Report notes (optional)</label><textarea id="notes-@inspection.Id" name="InspectionNotes" class="form-control" maxlength="2000" rows="3"></textarea></div>
+                                    </div>
+                                    <button class="btn btn-primary mt-3" type="submit">Submit inspection report</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <div class="border rounded p-3 mt-auto">
+                                    <div class="small"><strong>Engine:</strong> @inspection.EngineCondition · <strong>Transmission:</strong> @inspection.TransmissionCondition</div>
+                                    <div class="small"><strong>Body:</strong> @inspection.BodyCondition · <strong>Brakes:</strong> @inspection.BrakesCondition</div>
+                                    @if (!string.IsNullOrWhiteSpace(inspection.InspectionNotes))
+                                    {
+                                        <p class="small mb-0 mt-2">@inspection.InspectionNotes</p>
+                                    }
+                                    <p class="small text-muted mb-0 mt-2">Completed @inspection.CompletedAtUtc?.ToLocalTime().ToString("MMM d, yyyy h:mm tt")</p>
                                 </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="border rounded-3 p-3">
-                                    <strong>Transmission</strong>
-                                    <div class="small muted">Good / Needs Attention / Poor</div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="border rounded-3 p-3">
-                                    <strong>Suspension & Brakes</strong>
-                                    <div class="small muted">Good / Needs Attention / Poor</div>
-                                </div>
-                            </div>
+                            }
                         </div>
-                    </div>
-                </main>
+                    </article></div>
+                }
             </div>
-        </div>
+        }
+    </section>
+</main>
 
-        <footer class="container-fluid page-footer px-4 border-top bg-white py-3">
-            © 2026 AutoVerify · Static university project demonstration
-        </footer>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        (() => {
+            const dashboardUrl = '@Url.Action("Inspector", "Dashboard")';
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+            const showMessage = (message, isError = false) => {
+                $('#inspector-ajax-message').remove();
+                $('<div>', {
+                    id: 'inspector-ajax-message',
+                    class: `alert ${isError ? 'alert-danger' : 'alert-success'} mb-4`,
+                    role: isError ? 'alert' : 'status',
+                    text: message
+                }).prependTo('#inspector-dashboard');
+            };
 
-</html>
+            const refreshDashboard = message => $.get(dashboardUrl).done(html => {
+                const documentFragment = new DOMParser().parseFromString(html, 'text/html');
+                const refreshedDashboard = documentFragment.querySelector('#inspector-dashboard');
+                if (refreshedDashboard) {
+                    $('#inspector-dashboard').html(refreshedDashboard.innerHTML);
+                    if (message) showMessage(message);
+                }
+            }).fail(() => showMessage('The update succeeded, but the dashboard could not refresh. Reload the page to see the latest status.', true));
 
+            const showFailure = xhr => showMessage(xhr.responseJSON?.message || 'The request could not be completed.', true);
+
+            $('#inspector-dashboard').on('submit', '.js-inspector-claim-form', function (event) {
+                event.preventDefault();
+                const form = $(this);
+                $.post(form.attr('action'), form.serialize())
+                    .done(result => refreshDashboard(result.message))
+                    .fail(showFailure);
+            });
+
+            $('#inspector-dashboard').on('submit', '.js-inspector-report-form', function (event) {
+                event.preventDefault();
+                const form = $(this);
+                $.ajax({ url: form.attr('action'), method: 'POST', data: form.serialize() })
+                    .done(result => refreshDashboard(result.message))
+                    .fail(showFailure);
+            });
+        })();
+    </script>
+}

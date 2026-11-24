@@ -1,210 +1,101 @@
+@model AutoVerifyMVC.Models.SellerDashboardViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Seller Dashboard";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AutoVerify used car marketplace and inspection management platform.">
-    <title>Seller Dashboard | AutoVerify</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-        :root {
-            --primary-blue: #1d3557;
-            --navbar-bg: #ffffff;
-            --header-text: #374151;
-            --body-text: #475569;
-            --charcoal-text: #1f2937;
-            --light-bg: #f0f4f8;
-            --border-color: #e2e8f0;
-            --green-accent: #1f7a4c;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: var(--body-text);
-        }
-
-        .navbar-brand {
-            color: var(--header-text);
-            font-weight: 700;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        .section-title {
-            color: var(--charcoal-text);
-        }
-
-        .text-primary {
-            color: var(--primary-blue) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-blue);
-            border-color: var(--primary-blue);
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background-color: #14243b;
-            border-color: #14243b;
-            color: #ffffff;
-        }
-
-        .soft-card {
-            border-color: var(--border-color);
-        }
-
-        .status-yellow {
-            background-color: #fef9c3;
-            color: #a16207;
-        }
-
-        .status-green {
-            background-color: #dcfce7;
-            color: #15803d;
-        }
-
-        .status-blue {
-            background-color: #dbeafe;
-            color: var(--primary-blue);
-        }
-
-        .page-footer {
-            color: var(--body-text);
-            background-color: #ffffff;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg bg-white border-bottom">
-        <div class="container-fluid px-3 px-lg-4 py-1">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <span class="brand-name">AutoVerify</span>
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                <span class="small muted d-none d-sm-inline">Seller workspace</span>
-                <div class="avatar">S</div>
-                <a href="login.html" class="btn btn-sm btn-outline-secondary"
-                   style="color: var(--primary-blue); border-color: var(--border-color);">Sign out</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid dashboard-shell">
-        <div class="row">
-
-            <aside class="col-md-3 col-lg-2 sidebar">
-                <div class="sidebar-label">Seller menu</div>
-                <nav class="nav flex-column">
-                    <a class="nav-link active" href="seller.html">My listings</a>
-                    <a class="nav-link" href="#">Add new vehicle</a>
-                    <a class="nav-link" href="#">Inspection requests</a>
-                </nav>
-                <div class="sidebar-label">Account</div>
-                <nav class="nav flex-column">
-                    <a class="nav-link" href="index.html">Public website</a>
-                    <a class="nav-link" href="login.html">Sign out</a>
-                </nav>
-            </aside>
-
-            <main class="col-md-9 col-lg-10 dashboard-main">
-                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
-                    <div>
-                        <div class="text-primary fw-bold small text-uppercase">Seller dashboard</div>
-                        <h1 class="h3 section-title mb-1">My vehicle listings</h1>
-                        <p class="muted mb-0">Manage your active car listings and approve incoming inspection requests.
-                        </p>
-                    </div>
-                    <a href="#" class="btn btn-primary">+ Add new listing</a>
-                </div>
-
-                <div class="row g-4 mb-5">
-                    <!-- Listing 1: Toyota Corolla -->
-                    <div class="col-md-6 col-lg-4">
-                        <article class="soft-card h-100 overflow-hidden">
-                            <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/corolla.png"
-                                 alt="Black Toyota Corolla 2023">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge text-bg-light border">2023</span>
-                                    <span class="status status-green">Active Listing</span>
-                                </div>
-                                <h5 class="fw-bold text-dark mb-1">Toyota Corolla Altis</h5>
-                                <p class="muted small mb-2">1.6L • Automatic • 15,000 km</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="fw-bold" style="color: var(--primary-blue);">PKR 6,100,000</span>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary"
-                                       style="color: var(--primary-blue); border-color: var(--border-color);">Manage</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Listing 2: Honda Civic -->
-                    <div class="col-md-6 col-lg-4">
-                        <article class="soft-card h-100 overflow-hidden">
-                            <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/civic.png"
-                                 alt="Grey Honda Civic 2022">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge text-bg-light border">2022</span>
-                                    <span class="status status-green">Active Listing</span>
-                                </div>
-                                <h5 class="fw-bold text-dark mb-1">Honda Civic Oriel</h5>
-                                <p class="muted small mb-2">1.5L Turbo • Automatic • 28,000 km</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="fw-bold" style="color: var(--primary-blue);">PKR 7,200,000</span>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary"
-                                       style="color: var(--primary-blue); border-color: var(--border-color);">Manage</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Listing 3: Kia Sportage -->
-                    <div class="col-md-6 col-lg-4">
-                        <article class="soft-card h-100 overflow-hidden">
-                            <img class="w-100" style="height: 200px; object-fit: cover;" src="asset/images/kia.png"
-                                 alt="White Kia Sportage">
-                            <div class="p-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="badge text-bg-light border">2021</span>
-                                    <span class="status status-yellow">Inspection Pending</span>
-                                </div>
-                                <h5 class="fw-bold text-dark mb-1">Kia Sportage Alpha</h5>
-                                <p class="muted small mb-2">2.0L • Automatic • 42,000 km</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="fw-bold" style="color: var(--primary-blue);">PKR 7,500,000</span>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary"
-                                       style="color: var(--primary-blue); border-color: var(--border-color);">Manage</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </main>
-
+<main class="container py-5">
+    <div class="mb-4">
+        <p class="text-uppercase small fw-bold text-primary mb-1">Seller workspace</p>
+        <h1 class="h2 mb-1">Manage your vehicle listings</h1>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <p class="text-muted mb-0">Review and manage your vehicle listings and inspection requests.</p>
+            <a class="btn btn-primary" href="#add-vehicle-form">+ Add a vehicle</a>
         </div>
     </div>
 
-    <footer class="container-fluid page-footer px-4 border-top bg-white py-3">
-        © 2026 AutoVerify · Static university project demonstration
-    </footer>
+    @if (TempData["SellerMessage"] is string message)
+    {
+        <div class="alert alert-success">@message</div>
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <section id="add-vehicle-form" class="card shadow-sm mb-5" aria-labelledby="add-listing-heading">
+        <div class="card-body">
+            <h2 id="add-listing-heading" class="h4 mb-3">Add a vehicle listing</h2>
+            <form asp-action="CreateListing" method="post" class="row g-3">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="col-md-4"><label asp-for="CreateListing.Make" class="form-label"></label><input asp-for="CreateListing.Make" class="form-control" /><span asp-validation-for="CreateListing.Make" class="text-danger small"></span></div>
+                <div class="col-md-4"><label asp-for="CreateListing.Model" class="form-label"></label><input asp-for="CreateListing.Model" class="form-control" /><span asp-validation-for="CreateListing.Model" class="text-danger small"></span></div>
+                <div class="col-md-4"><label asp-for="CreateListing.Trim" class="form-label"></label><input asp-for="CreateListing.Trim" class="form-control" /></div>
+                <div class="col-md-2"><label asp-for="CreateListing.ModelYear" class="form-label">Year</label><input asp-for="CreateListing.ModelYear" class="form-control" /><span asp-validation-for="CreateListing.ModelYear" class="text-danger small"></span></div>
+                <div class="col-md-3"><label asp-for="CreateListing.Price" class="form-label">Price (PKR)</label><input asp-for="CreateListing.Price" class="form-control" /><span asp-validation-for="CreateListing.Price" class="text-danger small"></span></div>
+                <div class="col-md-3"><label asp-for="CreateListing.MileageKm" class="form-label">Mileage (km)</label><input asp-for="CreateListing.MileageKm" class="form-control" /></div>
+                <div class="col-md-4"><label asp-for="CreateListing.Engine" class="form-label"></label><input asp-for="CreateListing.Engine" class="form-control" /></div>
+                <div class="col-md-4"><label asp-for="CreateListing.Transmission" class="form-label"></label><input asp-for="CreateListing.Transmission" class="form-control" /></div>
+                <div class="col-md-4"><label asp-for="CreateListing.FuelType" class="form-label">Fuel type</label><input asp-for="CreateListing.FuelType" class="form-control" /></div>
+                <div class="col-md-6"><label asp-for="CreateListing.ImagePath" class="form-label">Vehicle photo</label><select asp-for="CreateListing.ImagePath" class="form-select"><option value="/assets/images/Default.png">Use default photo</option><option value="/assets/images/alto.png">Suzuki Alto</option><option value="/assets/images/civic.png">Honda Civic</option><option value="/assets/images/corolla.png">Toyota Corolla</option><option value="/assets/images/kia.png">Kia Sportage</option><option value="/assets/images/LandCruiser.png">Toyota Land Cruiser</option><option value="/assets/images/Sonata%20Linen.png">Hyundai Sonata</option></select><span asp-validation-for="CreateListing.ImagePath" class="text-danger small"></span></div>
+                <div class="col-12"><label asp-for="CreateListing.Description" class="form-label"></label><textarea asp-for="CreateListing.Description" class="form-control" rows="3"></textarea><span asp-validation-for="CreateListing.Description" class="text-danger small"></span></div>
+                <div class="col-12"><button class="btn btn-primary" type="submit">Publish listing</button></div>
+            </form>
+        </div>
+    </section>
 
-</html>
+    <section class="row g-3 mb-5" aria-label="Dashboard summary">
+        <div class="col-sm-6 col-xl-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">Available cars</div><div class="display-6 fw-bold">@Model.ActiveListings</div></div></div></div>
+        <div class="col-sm-6 col-xl-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">Reserved</div><div class="display-6 fw-bold">@Model.ReservedListings</div></div></div></div>
+        <div class="col-sm-6 col-xl-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">Unavailable</div><div class="display-6 fw-bold">@Model.UnavailableListings</div></div></div></div>
+        <div class="col-sm-6 col-xl-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">Sold</div><div class="display-6 fw-bold">@Model.SoldListings</div></div></div></div>
+        <div class="col-sm-6 col-xl-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">Total requests</div><div class="display-6 fw-bold">@Model.TotalInquiries</div></div></div></div>
+        <div class="col-sm-6 col-xl-2"><div class="card h-100 border-warning"><div class="card-body"><div class="text-muted small">Pending requests</div><div class="display-6 fw-bold">@Model.PendingInquiries</div></div></div></div>
+    </section>
 
+    <section class="mb-5" aria-labelledby="listings-heading">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 id="listings-heading" class="h4 mb-0">Vehicle listings</h2>
+            <span class="small text-muted">@Model.Cars.Count listings</span>
+        </div>
+        <div id="seller-car-results" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @await Html.PartialAsync("_SellerCarCards", Model.Cars)
+        </div>
+    </section>
+
+    <section class="card shadow-sm" aria-labelledby="requests-heading">
+        <div class="card-body">
+            <h2 id="requests-heading" class="h4 mb-3">Inspection requests</h2>
+            @await Html.PartialAsync("_SellerInquiries", Model.Inquiries)
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        (() => {
+            const statusUrl = '@Url.Action("UpdateListingStatus", "Dashboard")';
+
+            $('#seller-car-results').on('submit', '.js-listing-status-form', function (event) {
+                event.preventDefault();
+                const form = $(this);
+                const listingId = form.find('[name="ListingId"]').val();
+                const status = form.find('[name="Status"]').val();
+                const feedback = form.find('.js-status-feedback');
+                feedback.removeClass('text-danger text-success').text('Saving…');
+
+                $.ajax({
+                    url: statusUrl,
+                    method: 'POST',
+                    data: form.serialize()
+                }).done(result => {
+                    const badge = $('#listing-status-' + listingId);
+                    badge.text(result.status)
+                        .removeClass('text-bg-success text-bg-warning text-bg-secondary text-bg-danger')
+                        .addClass(result.status === 'Sold' ? 'text-bg-danger' : result.status === 'Unavailable' ? 'text-bg-secondary' : result.status === 'Reserved' ? 'text-bg-warning' : 'text-bg-success');
+                    feedback.addClass('text-success').text(result.message);
+                }).fail(xhr => {
+                    const result = xhr.responseJSON;
+                    feedback.addClass('text-danger').text(result?.message || 'Could not update listing status.');
+                });
+            });
+        })();
+    </script>
+}
